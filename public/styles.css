@@ -1,0 +1,358 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+.active {
+  background: #01f0d0 0% 0% no-repeat padding-box;
+  border-radius: 41px;
+  opacity: 1;
+  padding: 1rem;
+}
+.container {
+  min-height: 100vh;
+  background: #f6f7f8 0% 0% no-repeat padding-box;
+  opacity: 1;
+  padding: 1rem;
+}
+.navbar {
+  min-width: 100vh;
+  height: 72px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border-radius: 70px;
+  opacity: 1;
+}
+.layout {
+  display: flex;
+  flex-direction: row;
+  padding-top: 1rem;
+}
+.patients {
+  height: 1054px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border-radius: 16px;
+  opacity: 1;
+  margin-right: 2rem;
+}
+
+.diagnosis {
+  margin-right: 2rem;
+}
+
+.history {
+  height: 673px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border-radius: 16px;
+  opacity: 1;
+}
+
+.list {
+  height: 349px;
+  background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border-radius: 16px;
+  opacity: 1;
+  margin-top: 2rem;
+  padding: 2rem;
+}
+.h2-list {
+  margin-bottom: 2rem;
+}
+
+.patient-details {
+  height: 735px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border-radius: 16px;
+  opacity: 1;
+}
+
+.results {
+  height: 290px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border-radius: 16px;
+  opacity: 1;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+.nav-layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.link {
+  margin-right: 1.5rem;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  width: 211px;
+  height: 48px;
+  background: transparent;
+  opacity: 1;
+}
+
+.overview {
+  width: 16px;
+  height: 17px;
+  opacity: 1;
+  margin-right: 0.5rem;
+  padding-top: 5px;
+}
+p.nav {
+  text-align: left;
+  font: normal normal bold 14px/19px Manrope;
+  letter-spacing: 0px;
+  color: #072635;
+  opacity: 1;
+}
+
+.anchor {
+  margin-right: 1.5rem;
+}
+.nav1 {
+  text-align: left;
+  font: normal normal bold 14px/19px Manrope;
+  letter-spacing: 0px;
+  color: #707070;
+  opacity: 1;
+}
+
+.senior {
+  width: 241px;
+  height: 44px;
+}
+
+.margin-left {
+  margin-left: 0.5rem;
+}
+.line {
+  width: 1px;
+  height: 44px;
+  background: #ededed 0% 0% no-repeat padding-box;
+  opacity: 1;
+}
+
+.settings {
+  width: 19px;
+  height: 20px;
+  opacity: 1;
+}
+
+.dot3 {
+  width: 4px;
+  height: 18px;
+  /* background: transparent
+    url("assets/icons/more_vert_FILL0_wght300_GRAD0_opsz24.svg") 0% 0% no-repeat
+    padding-box; */
+  opacity: 1;
+}
+
+.chart {
+  width: 100%;
+  height: 22rem;
+  padding: 1rem;
+  background: #f4f0fe 0% 0% no-repeat padding-box;
+  border-radius: 12px;
+  opacity: 1;
+  margin-bottom: 1rem;
+}
+
+.patients-chart {
+  padding: 2rem;
+  padding-top: 1rem;
+}
+
+.chart-h2 {
+  margin-bottom: 1rem;
+}
+
+.chart-h3 {
+  margin-top: 1rem;
+  margin-left: 1rem;
+}
+
+.card {
+  width: 33.3%;
+  height: 14rem;
+
+  /* background: #e0f3fa 0% 0% no-repeat padding-box; */
+  border-radius: 12px;
+  opacity: 1;
+  padding: 1rem;
+}
+.padding {
+  margin-bottom: 2rem;
+}
+
+.content-card {
+  text-align: left;
+  font: normal normal medium 16px/22px Manrope;
+  letter-spacing: 0px;
+  color: #072635;
+  text-transform: capitalize;
+  opacity: 1;
+}
+.rate-card {
+  text-align: left;
+  font: normal normal 800 30px/41px Manrope;
+  letter-spacing: 0px;
+  color: #072635;
+  opacity: 1;
+}
+.status-card {
+  text-align: left;
+  font: normal normal normal 14px/19px Manrope;
+  letter-spacing: 0px;
+  color: #072635;
+  opacity: 1;
+  margin-top: 1rem;
+}
+.input-search {
+  padding: 0.5rem;
+}
+.input {
+  width: 90%;
+  padding: 0.5rem;
+  position: relative;
+  border: none;
+  text-align: left;
+  font: normal normal 800 24px/33px Manrope;
+  letter-spacing: 0px;
+  color: #072635;
+  opacity: 1;
+}
+.search {
+  position: absolute;
+  left: 260px;
+  margin-top: 14px;
+}
+.patient-card {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  padding-right: 2rem;
+}
+.patient-info {
+  display: flex;
+  align-items: center;
+}
+.overflow-hidden {
+  overflow: hidden;
+}
+.overflow-y-scroll {
+  overflow-y: scroll;
+  height: 90%;
+}
+.w200 {
+  width: 200px;
+}
+.simple-flex {
+  display: flex;
+}
+.name {
+  text-align: center;
+  font: normal normal 800 24px/33px Manrope;
+  letter-spacing: 0px;
+  color: #072635;
+  opacity: 1;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.title {
+  text-align: left;
+  font: normal normal lighter 14px/19px Manrope;
+  letter-spacing: 0px;
+  color: #072635;
+  text-transform: capitalize;
+  opacity: 1;
+}
+.value {
+  text-align: left;
+  font: normal normal bold 14px/19px Manrope;
+  letter-spacing: 0px;
+  color: #072635;
+  text-transform: capitalize;
+  opacity: 1;
+}
+.margin-right {
+  margin-right: 1rem;
+}
+.padding-patient {
+  padding: 1rem;
+}
+.margin-bottom {
+  margin-bottom: 1rem;
+}
+.button {
+  background: #01f0d0 0% 0% no-repeat padding-box;
+  border-radius: 41px;
+  opacity: 1;
+  padding: 1rem;
+  border: none;
+  text-align: left;
+  font: normal normal bold 14px/19px Manrope;
+  letter-spacing: 0px;
+  color: #072635;
+}
+.margin-top {
+  margin-top: 4rem;
+}
+
+.table-margin {
+  background: #f6f7f8 0% 0% no-repeat padding-box;
+  border-radius: 24px;
+  opacity: 1;
+  border: none;
+}
+th {
+  padding: 1rem;
+}
+td {
+  padding: 1rem;
+  text-align: left;
+  font: normal normal normal 14px/19px Manrope;
+  letter-spacing: 0px;
+  color: #072635;
+  opacity: 1;
+}
+.space-between {
+  display: flex;
+  justify-content: space-between;
+}
+.test-text {
+  text-align: left;
+  font: normal normal normal 13px/18px Manrope;
+  letter-spacing: 0px;
+  color: #072635;
+  text-transform: capitalize;
+  opacity: 1;
+}
+.padding-1rem {
+  padding: 1rem;
+}
+@media screen {
+  /* .nav-links {
+    display: none;
+  } */
+}
