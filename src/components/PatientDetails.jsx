@@ -8,27 +8,27 @@ const PatientDetails = (prop) => {
       <PatientInfo
         icon="assets/icons/BirthIcon.svg"
         title="Date Of Birth"
-        value="August 23, 1996"
+        value={prop.DOB}
       />
       <PatientInfo
         icon="assets/icons/FemaleIcon.svg"
         title="Gender"
-        value="Female"
+        value={prop.gender}
       />
       <PatientInfo
         icon="assets/icons/PhoneIcon.svg"
         title="Contact Info."
-        value="(415) 555-1234"
+        value={prop.contact}
       />
       <PatientInfo
         icon="assets/icons/PhoneIcon.svg"
         title="Emergency Contacts"
-        value="(415) 555-5678"
+        value={prop.emergency}
       />
       <PatientInfo
         icon="assets/icons/InsuranceIcon.svg"
         title="Insurance Provider"
-        value="Sunrise Health Assurance"
+        value={prop.insurance}
       />
       <div className="flex margin-top">
         <button className="button">Show All Information</button>

@@ -1,7 +1,6 @@
 import { Outlet } from "react-router-dom";
 import NavBar from "../components/NavBar";
-// import PatientCard from "../components/PatientCard";
-// import patients from "../patients";
+import PatientCard from "../components/PatientCard";
 import PatientDetails from "../components/PatientDetails";
 import LabResults from "../components/LabResults";
 import { useEffect, useState } from "react";
@@ -10,40 +9,18 @@ import axios from "axios";
 const Home = () => {
   const [patients, setPatients] = useState([]);
 
+  const [, , , jessica] = patients;
+
+  console.log(jessica);
+
   useEffect(() => {
     const fetchPatients = async () => {
-      // const username = `${import.meta.env.VITE_APP_USERNAME}`;
-      // const password = `${import.meta.env.VITE_APP_PASSWORD}`;
-      // const token = btoa(`${username}:${password}`);
+      const { data } = await axios.get(
+        "https://fedskillstest.coalitiontechnologies.workers.dev",
+        { auth: { username: "coalition", password: "skills-test" } }
+      );
 
-      const url = "https://fedskillstest.coalitiontechnologies.workers.dev";
-      const username = "coalition";
-      const password = "skill-test";
-      const basicAuth = "Basic " + btoa(`${username}:${password}`);
-      // Y29hbGl0aW9uOnNraWxscy10ZXN0
-
-      console.log(basicAuth);
-
-      await axios
-        .get(
-          url,
-          {},
-          {
-            headers: {
-              Authorization: `${basicAuth}`,
-              "Content-Type": "application/json",
-            },
-          }
-        )
-        .then((response) => {
-          console.log(response.data);
-        })
-        .catch((error) => {
-          console.log(
-            "Error",
-            error.response ? error.response.data : error.message
-          );
-        });
+      setPatients(data);
     };
     fetchPatients();
   }, []);
@@ -63,18 +40,19 @@ const Home = () => {
               />
             </div>
             <div className="overflow-y-scroll">
-              {/* {patients.map((patientInfo) => {
+              {patients.map((patientInfo) => {
+                const { profile_picture, name, gender, age } = patientInfo;
                 return (
                   <PatientCard
                     key={Date.now}
-                    img={patientInfo.img}
-                    name={patientInfo.name}
-                    gender={patientInfo.gender}
-                    age={patientInfo.age}
+                    img={profile_picture}
+                    name={name}
+                    gender={gender}
+                    age={age}
                     width={patientInfo.width}
                   />
                 );
-              })} */}
+              })}
             </div>
           </div>
           <div className="diagnosis">
@@ -94,19 +72,19 @@ const Home = () => {
                   </thead>
                   <tbody>
                     <tr>
-                      <td>Hypertension</td>
-                      <td>Chronic high blood pressure</td>
-                      <td>Under Observation</td>
+                      <td>{jessica?.diagnostic_list[0].name}</td>
+                      <td>{jessica?.diagnostic_list[0].description}</td>
+                      <td>{jessica?.diagnostic_list[0].status}</td>
                     </tr>
                     <tr>
-                      <td>Type 2 Diabetes</td>
-                      <td>Insulin resistance and elevated blood sugar</td>
-                      <td>Cured</td>
+                      <td>{jessica?.diagnostic_list[1].name}</td>
+                      <td>{jessica?.diagnostic_list[1].description}</td>
+                      <td>{jessica?.diagnostic_list[1].status}</td>
                     </tr>
                     <tr>
-                      <td>Asthma</td>
-                      <td>Recurrent episodes of bronchial constriction</td>
-                      <td>Inactive</td>
+                      <td>{jessica?.diagnostic_list[2].name}</td>
+                      <td>{jessica?.diagnostic_list[2].description}</td>
+                      <td>{jessica?.diagnostic_list[2].status}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -116,18 +94,23 @@ const Home = () => {
 
           <div className="patient-details">
             <PatientDetails
-              img="assets/images/Layer 2/Layer 2@2x.png"
-              // name={patients[3].name}
+              img={jessica?.profile_picture}
+              name={jessica?.name}
+              DOB={jessica?.date_of_birth}
+              gender={jessica?.gender}
+              contact={jessica?.phone_number}
+              emergency={jessica?.emergency_contact}
+              insurance={jessica?.insurance_type}
             />
 
             <div className="results">
               <h2 className="margin-bottom">Lab Results</h2>
               <div className="padding-1rem overflow-y-scroll">
-                <LabResults test="Blood Tests" />
-                <LabResults test="CT Scans" />
-                <LabResults test="Radiology Reports" />
-                <LabResults test="X-Rays" />
-                <LabResults test="Urine Test" />
+                <LabResults test={jessica?.lab_results[0]} />
+                <LabResults test={jessica?.lab_results[1]} />
+                <LabResults test={jessica?.lab_results[2]} />
+                <LabResults test={jessica?.lab_results[3]} />
+                {/* <LabResults test={jessica?.lab_results[4]} /> */}
               </div>
             </div>
           </div>

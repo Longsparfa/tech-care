@@ -41,7 +41,7 @@ const NavBar = () => {
               alt="senior-woman-doctor"
             />
             <div className="link margin-left">
-              <p className="nav">Dr Dumebi</p>
+              <p className="nav">Dr ChukwuDumebi</p>
               <p className="nav1">General Practitioner</p>
             </div>
             <div className="line " />
