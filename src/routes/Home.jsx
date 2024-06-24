@@ -8,10 +8,14 @@ import axios from "axios";
 
 const Home = () => {
   const [patients, setPatients] = useState([]);
+  const [selectedPatientName, setSelectedPatient] = useState("jessica");
 
-  const [, , , jessica] = patients;
+  const selectedPatient = patients.find(
+    (person) => person.name === selectedPatientName
+  );
+  // console.log(selectedPatient);
 
-  console.log(jessica);
+  // const [, , , jessica] = patients;
 
   useEffect(() => {
     const fetchPatients = async () => {
@@ -50,6 +54,7 @@ const Home = () => {
                     gender={gender}
                     age={age}
                     width={patientInfo.width}
+                    setSelectedPatient={setSelectedPatient}
                   />
                 );
               })}
@@ -72,19 +77,25 @@ const Home = () => {
                   </thead>
                   <tbody>
                     <tr>
-                      <td>{jessica?.diagnostic_list[0].name}</td>
-                      <td>{jessica?.diagnostic_list[0].description}</td>
-                      <td>{jessica?.diagnostic_list[0].status}</td>
+                      <td>{selectedPatient?.diagnostic_list[0]?.name}</td>
+                      <td>
+                        {selectedPatient?.diagnostic_list[0]?.description}
+                      </td>
+                      <td>{selectedPatient?.diagnostic_list[0]?.status}</td>
                     </tr>
                     <tr>
-                      <td>{jessica?.diagnostic_list[1].name}</td>
-                      <td>{jessica?.diagnostic_list[1].description}</td>
-                      <td>{jessica?.diagnostic_list[1].status}</td>
+                      <td>{selectedPatient?.diagnostic_list[1]?.name}</td>
+                      <td>
+                        {selectedPatient?.diagnostic_list[1]?.description}
+                      </td>
+                      <td>{selectedPatient?.diagnostic_list[1]?.status}</td>
                     </tr>
                     <tr>
-                      <td>{jessica?.diagnostic_list[2].name}</td>
-                      <td>{jessica?.diagnostic_list[2].description}</td>
-                      <td>{jessica?.diagnostic_list[2].status}</td>
+                      <td>{selectedPatient?.diagnostic_list[2]?.name}</td>
+                      <td>
+                        {selectedPatient?.diagnostic_list[2]?.description}
+                      </td>
+                      <td>{selectedPatient?.diagnostic_list[2]?.status}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -94,23 +105,22 @@ const Home = () => {
 
           <div className="patient-details">
             <PatientDetails
-              img={jessica?.profile_picture}
-              name={jessica?.name}
-              DOB={jessica?.date_of_birth}
-              gender={jessica?.gender}
-              contact={jessica?.phone_number}
-              emergency={jessica?.emergency_contact}
-              insurance={jessica?.insurance_type}
+              img={selectedPatient?.profile_picture}
+              name={selectedPatient?.name}
+              DOB={selectedPatient?.date_of_birth}
+              gender={selectedPatient?.gender}
+              contact={selectedPatient?.phone_number}
+              emergency={selectedPatient?.emergency_contact}
+              insurance={selectedPatient?.insurance_type}
             />
 
             <div className="results">
               <h2 className="margin-bottom">Lab Results</h2>
               <div className="padding-1rem overflow-y-scroll">
-                <LabResults test={jessica?.lab_results[0]} />
-                <LabResults test={jessica?.lab_results[1]} />
-                <LabResults test={jessica?.lab_results[2]} />
-                <LabResults test={jessica?.lab_results[3]} />
-                {/* <LabResults test={jessica?.lab_results[4]} /> */}
+                <LabResults test={selectedPatient?.lab_results[0]} />
+                <LabResults test={selectedPatient?.lab_results[1]} />
+                <LabResults test={selectedPatient?.lab_results[2]} />
+                <LabResults test={selectedPatient?.lab_results[3]} />
               </div>
             </div>
           </div>
