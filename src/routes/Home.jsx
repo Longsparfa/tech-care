@@ -5,17 +5,13 @@ import PatientDetails from "../components/PatientDetails";
 import LabResults from "../components/LabResults";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { v4 as uuid } from "uuid";
 
 const Home = () => {
   const [patients, setPatients] = useState([]);
-  const [selectedPatientName, setSelectedPatient] = useState("jessica");
-
-  const selectedPatient = patients.find(
-    (person) => person.name === selectedPatientName
-  );
-  // console.log(selectedPatient);
-
-  // const [, , , jessica] = patients;
+  const [selectedPatientName, setSelectedPatientName] =
+    useState("Jessica Taylor");
+  const [selectedPatientData, setSelectedPatientData] = useState(null);
 
   useEffect(() => {
     const fetchPatients = async () => {
@@ -25,9 +21,15 @@ const Home = () => {
       );
 
       setPatients(data);
+
+      const defaultPatient = data.find(
+        (person) => person.name === selectedPatientName
+      );
+
+      setSelectedPatientData(defaultPatient);
     };
     fetchPatients();
-  }, []);
+  }, [selectedPatientName]);
 
   return (
     <>
@@ -48,13 +50,14 @@ const Home = () => {
                 const { profile_picture, name, gender, age } = patientInfo;
                 return (
                   <PatientCard
-                    key={Date.now}
+                    key={uuid()}
                     img={profile_picture}
                     name={name}
                     gender={gender}
                     age={age}
                     width={patientInfo.width}
-                    setSelectedPatient={setSelectedPatient}
+                    selectedPatientName={selectedPatientName}
+                    setSelectedPatientName={setSelectedPatientName}
                   />
                 );
               })}
@@ -76,27 +79,15 @@ const Home = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>{selectedPatient?.diagnostic_list[0]?.name}</td>
-                      <td>
-                        {selectedPatient?.diagnostic_list[0]?.description}
-                      </td>
-                      <td>{selectedPatient?.diagnostic_list[0]?.status}</td>
-                    </tr>
-                    <tr>
-                      <td>{selectedPatient?.diagnostic_list[1]?.name}</td>
-                      <td>
-                        {selectedPatient?.diagnostic_list[1]?.description}
-                      </td>
-                      <td>{selectedPatient?.diagnostic_list[1]?.status}</td>
-                    </tr>
-                    <tr>
-                      <td>{selectedPatient?.diagnostic_list[2]?.name}</td>
-                      <td>
-                        {selectedPatient?.diagnostic_list[2]?.description}
-                      </td>
-                      <td>{selectedPatient?.diagnostic_list[2]?.status}</td>
-                    </tr>
+                    {selectedPatientData?.diagnostic_list.map((dia) => {
+                      return (
+                        <tr key={uuid()}>
+                          <td>{dia.name}</td>
+                          <td>{dia.description}</td>
+                          <td>{dia.status}</td>
+                        </tr>
+                      );
+                    })}
                   </tbody>
                 </table>
               </div>
@@ -105,22 +96,21 @@ const Home = () => {
 
           <div className="patient-details">
             <PatientDetails
-              img={selectedPatient?.profile_picture}
-              name={selectedPatient?.name}
-              DOB={selectedPatient?.date_of_birth}
-              gender={selectedPatient?.gender}
-              contact={selectedPatient?.phone_number}
-              emergency={selectedPatient?.emergency_contact}
-              insurance={selectedPatient?.insurance_type}
+              img={selectedPatientData?.profile_picture}
+              name={selectedPatientData?.name}
+              DOB={selectedPatientData?.date_of_birth}
+              gender={selectedPatientData?.gender}
+              contact={selectedPatientData?.phone_number}
+              emergency={selectedPatientData?.emergency_contact}
+              insurance={selectedPatientData?.insurance_type}
             />
 
             <div className="results">
               <h2 className="margin-bottom">Lab Results</h2>
               <div className="padding-1rem overflow-y-scroll">
-                <LabResults test={selectedPatient?.lab_results[0]} />
-                <LabResults test={selectedPatient?.lab_results[1]} />
-                <LabResults test={selectedPatient?.lab_results[2]} />
-                <LabResults test={selectedPatient?.lab_results[3]} />
+                {selectedPatientData?.lab_results.map((test) => {
+                  return <LabResults key={uuid()} test={test} />;
+                })}
               </div>
             </div>
           </div>
