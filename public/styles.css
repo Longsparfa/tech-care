@@ -16,6 +16,7 @@ a {
 }
 .active-1 {
   background: #01f0d0 0% 0% no-repeat padding-box;
+  width: 100%;
 }
 .container {
   min-height: 100vh;

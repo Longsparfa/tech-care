@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 
 const PatientCard = (prop) => {
   function handleClick(name) {
@@ -6,11 +6,8 @@ const PatientCard = (prop) => {
   }
 
   return (
-    <NavLink
-      to="#"
-      className={() => (prop.name === prop.selectedPatientName ? "active" : "")}
-    >
-      <a className={`patient-card`} onClick={() => handleClick(prop.name)}>
+    
+      <a className={`patient-card`} style={{background: `${prop.name === prop.selectedPatientName ? "#D8FCF7" : ""}`  }} onClick={() => handleClick(prop.name)}>
         <div className="patient-info">
           <img src={prop.img} alt="patient" style={{ width: prop.width }} />
           <div className="margin-left">
@@ -25,7 +22,6 @@ const PatientCard = (prop) => {
           alt=""
         />
       </a>
-    </NavLink>
   );
 };
 
