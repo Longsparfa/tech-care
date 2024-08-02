@@ -1,7 +1,5 @@
 import { LineChart } from "@mui/x-charts/LineChart";
 import Card from "../components/Card";
-import { useEffect, useState } from "react";
-import axios from "axios";
 
 const Patients = ({ selectedPatientData }) => {
   // const [data, setData] = useState([]);
@@ -18,10 +16,14 @@ const Patients = ({ selectedPatientData }) => {
   //   };
   //   fetchPatients();
   // }, []);
-  selectedPatientData?.diagnosis_history.flatMap(
-    (diagnosis) => diagnosis.blood_pressure.systolic.value
-  );
-  const sData = [];
+  const sData =
+    selectedPatientData && selectedPatientData.diagnosis_history
+      ? Array.from(
+          selectedPatientData.diagnosis_history.flatMap(
+            (diagnosis) => diagnosis.blood_pressure.systolic.value
+          )
+        )
+      : [];
   // `${selectedPatientData?.diagnosis_history[1].blood_pressure.systolic.value}`,
   // `${selectedPatientData?.diagnosis_history[2].blood_pressure.systolic.value}`,
   // `${selectedPatientData?.diagnosis_history[3].blood_pressure.systolic.value}`,
@@ -47,11 +49,15 @@ const Patients = ({ selectedPatientData }) => {
   // `${selectedPatientData?.diagnosis_history[23].blood_pressure.systolic.value}`,
   // `${selectedPatientData?.diagnosis_history[24].blood_pressure.systolic.value}`,
 
-  let data = selectedPatientData?.diagnosis_history.flatMap(
-    (diagnosis) => diagnosis.blood_pressure.diastolic.value
-  );
-  // console.log(...data);
-  const dData = [];
+  const dData =
+    selectedPatientData && selectedPatientData.diagnosis_history
+      ? Array.from(
+          selectedPatientData.diagnosis_history.flatMap(
+            (diagnosis) => diagnosis.blood_pressure.diastolic.value
+          )
+        )
+      : [];
+
   // `${selectedPatientData?.diagnosis_history[0].blood_pressure.diastolic.value}`,
   // `${selectedPatientData?.diagnosis_history[1].blood_pressure.diastolic.value}`,
   // `${selectedPatientData?.diagnosis_history[2].blood_pressure.diastolic.value}`,
@@ -77,10 +83,19 @@ const Patients = ({ selectedPatientData }) => {
   // `${selectedPatientData?.diagnosis_history[22].blood_pressure.diastolic.value}`,
   // `${selectedPatientData?.diagnosis_history[23].blood_pressure.diastolic.value}`,
   // `${selectedPatientData?.diagnosis_history[24].blood_pressure.diastolic.value}`,
-  const xLabels = [
-    `${selectedPatientData?.diagnosis_history.map(
-      (diagnosis) => `${diagnosis.month}, ${diagnosis.year}`
-    )}`,
+  const xLabels =
+    selectedPatientData && selectedPatientData.diagnosis_history
+      ? Array.from(
+          selectedPatientData.diagnosis_history.flatMap(
+            (diagnosis) => `${diagnosis.month}, ${diagnosis.year}`
+          )
+        )
+      : [];
+
+  [
+    // `${selectedPatientData?.diagnosis_history.map(
+    //   (diagnosis) => `${diagnosis.month}, ${diagnosis.year}`
+    // )}`,
     // `${selectedPatientData?.diagnosis_history.map(
     //   (diagnosis) =>
     // )}`,
