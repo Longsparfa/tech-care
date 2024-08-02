@@ -3,33 +3,38 @@ import NavBar from "../components/NavBar";
 import PatientCard from "../components/PatientCard";
 import PatientDetails from "../components/PatientDetails";
 import LabResults from "../components/LabResults";
-import { useEffect, useState } from "react";
-import axios from "axios";
+// import { useEffect, useState } from "react";
+// import axios from "axios";
 import { v4 as uuid } from "uuid";
 
-const Home = () => {
-  const [patients, setPatients] = useState([]);
-  const [selectedPatientName, setSelectedPatientName] =
-    useState("Jessica Taylor");
-  const [selectedPatientData, setSelectedPatientData] = useState(null);
+const Home = ({
+  patients,
+  selectedPatientName,
+  setSelectedPatientName,
+  selectedPatientData,
+}) => {
+  // const [patients, setPatients] = useState([]);
+  // const [selectedPatientName, setSelectedPatientName] =
+  //   useState("Jessica Taylor");
+  // const [selectedPatientData, setSelectedPatientData] = useState(null);
 
-  useEffect(() => {
-    const fetchPatients = async () => {
-      const { data } = await axios.get(
-        "https://fedskillstest.coalitiontechnologies.workers.dev",
-        { auth: { username: "coalition", password: "skills-test" } }
-      );
+  // useEffect(() => {
+  //   const fetchPatients = async () => {
+  //     const { data } = await axios.get(
+  //       "https://fedskillstest.coalitiontechnologies.workers.dev",
+  //       { auth: { username: "coalition", password: "skills-test" } }
+  //     );
 
-      setPatients(data);
+  //     setPatients(data);
 
-      const defaultPatient = data.find(
-        (person) => person.name === selectedPatientName
-      );
+  //     const defaultPatient = data.find(
+  //       (person) => person.name === selectedPatientName
+  //     );
 
-      setSelectedPatientData(defaultPatient);
-    };
-    fetchPatients();
-  }, [selectedPatientName]);
+  //     setSelectedPatientData(defaultPatient);
+  //   };
+  //   fetchPatients();
+  // }, [selectedPatientName]);
 
   return (
     <>
@@ -94,17 +99,18 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="patient-details">
-            <PatientDetails
-              img={selectedPatientData?.profile_picture}
-              name={selectedPatientData?.name}
-              DOB={selectedPatientData?.date_of_birth}
-              gender={selectedPatientData?.gender}
-              contact={selectedPatientData?.phone_number}
-              emergency={selectedPatientData?.emergency_contact}
-              insurance={selectedPatientData?.insurance_type}
-            />
-
+          <div>
+            <div className="patient-details">
+              <PatientDetails
+                img={selectedPatientData?.profile_picture}
+                name={selectedPatientData?.name}
+                DOB={selectedPatientData?.date_of_birth}
+                gender={selectedPatientData?.gender}
+                contact={selectedPatientData?.phone_number}
+                emergency={selectedPatientData?.emergency_contact}
+                insurance={selectedPatientData?.insurance_type}
+              />
+            </div>
             <div className="results">
               <h2 className="margin-bottom">Lab Results</h2>
               <div className="padding-1rem overflow-y-scroll">

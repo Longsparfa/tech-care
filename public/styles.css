@@ -19,21 +19,22 @@ a {
   width: 100%;
 }
 .container {
-  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto;
+
   background: #f6f7f8 0% 0% no-repeat padding-box;
   opacity: 1;
   padding: 1rem;
 }
 .navbar {
-  min-width: 100vh;
   height: 72px;
   background: #ffffff 0% 0% no-repeat padding-box;
   border-radius: 70px;
   opacity: 1;
 }
 .layout {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
   padding-top: 1rem;
 }
 .patients {
@@ -44,6 +45,16 @@ a {
   margin-right: 2rem;
 }
 
+.d-patients {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.p-info {
+  padding-left: 2rem;
+}
 .diagnosis {
   margin-right: 2rem;
 }
