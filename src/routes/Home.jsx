@@ -1,11 +1,12 @@
 import { Outlet } from "react-router-dom";
+import PropTypes from "prop-types";
 import NavBar from "../components/NavBar";
 import PatientCard from "../components/PatientCard";
 import PatientDetails from "../components/PatientDetails";
 import LabResults from "../components/LabResults";
-// import { useEffect, useState } from "react";
-// import axios from "axios";
 import { v4 as uuid } from "uuid";
+import { patientShape } from "../patient/patientShape";
+
 
 const Home = ({
   patients,
@@ -13,29 +14,6 @@ const Home = ({
   setSelectedPatientName,
   selectedPatientData,
 }) => {
-  // const [patients, setPatients] = useState([]);
-  // const [selectedPatientName, setSelectedPatientName] =
-  //   useState("Jessica Taylor");
-  // const [selectedPatientData, setSelectedPatientData] = useState(null);
-
-  // useEffect(() => {
-  //   const fetchPatients = async () => {
-  //     const { data } = await axios.get(
-  //       "https://fedskillstest.coalitiontechnologies.workers.dev",
-  //       { auth: { username: "coalition", password: "skills-test" } }
-  //     );
-
-  //     setPatients(data);
-
-  //     const defaultPatient = data.find(
-  //       (person) => person.name === selectedPatientName
-  //     );
-
-  //     setSelectedPatientData(defaultPatient);
-  //   };
-  //   fetchPatients();
-  // }, [selectedPatientName]);
-
   return (
     <>
       <div className="container">
@@ -124,6 +102,13 @@ const Home = ({
       </div>
     </>
   );
+};
+
+Home.propTypes = {
+  patients: PropTypes.arrayOf(patientShape),
+  selectedPatientName: PropTypes.string.isRequired,
+  setSelectedPatientName: PropTypes.func.isRequired,
+  selectedPatientData: patientShape,
 };
 
 export default Home;

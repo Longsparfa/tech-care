@@ -1,53 +1,18 @@
 import { LineChart } from "@mui/x-charts/LineChart";
+// import PropTypes from "prop-types";
 import Card from "../components/Card";
+import { patientShape } from "../patient/patientShape";
 
+patientShape;
 const Patients = ({ selectedPatientData }) => {
-  // const [data, setData] = useState([]);
-  // const [, , , jessica] = data;
-
-  // useEffect(() => {
-  //   const fetchPatients = async () => {
-  //     const { data } = await axios.get(
-  //       "https://fedskillstest.coalitiontechnologies.workers.dev",
-  //       { auth: { username: "coalition", password: "skills-test" } }
-  //     );
-
-  //     setData(data);
-  //   };
-  //   fetchPatients();
-  // }, []);
   const sData =
     selectedPatientData && selectedPatientData.diagnosis_history
       ? Array.from(
-          selectedPatientData.diagnosis_history.flatMap(
+          selectedPatientData?.diagnosis_history.flatMap(
             (diagnosis) => diagnosis.blood_pressure.systolic.value
           )
         )
       : [];
-  // `${selectedPatientData?.diagnosis_history[1].blood_pressure.systolic.value}`,
-  // `${selectedPatientData?.diagnosis_history[2].blood_pressure.systolic.value}`,
-  // `${selectedPatientData?.diagnosis_history[3].blood_pressure.systolic.value}`,
-  // `${selectedPatientData?.diagnosis_history[4].blood_pressure.systolic.value}`,
-  // `${selectedPatientData?.diagnosis_history[5].blood_pressure.systolic.value}`,
-  // `${selectedPatientData?.diagnosis_history[6].blood_pressure.systolic.value}`,
-  // `${selectedPatientData?.diagnosis_history[7].blood_pressure.systolic.value}`,
-  // `${selectedPatientData?.diagnosis_history[8].blood_pressure.systolic.value}`,
-  // `${selectedPatientData?.diagnosis_history[9].blood_pressure.systolic.value}`,
-  // `${selectedPatientData?.diagnosis_history[10].blood_pressure.systolic.value}`,
-  // `${selectedPatientData?.diagnosis_history[11].blood_pressure.systolic.value}`,
-  // `${selectedPatientData?.diagnosis_history[12].blood_pressure.systolic.value}`,
-  // `${selectedPatientData?.diagnosis_history[13].blood_pressure.systolic.value}`,
-  // `${selectedPatientData?.diagnosis_history[14].blood_pressure.systolic.value}`,
-  // `${selectedPatientData?.diagnosis_history[15].blood_pressure.systolic.value}`,
-  // `${selectedPatientData?.diagnosis_history[16].blood_pressure.systolic.value}`,
-  // `${selectedPatientData?.diagnosis_history[17].blood_pressure.systolic.value}`,
-  // `${selectedPatientData?.diagnosis_history[18].blood_pressure.systolic.value}`,
-  // `${selectedPatientData?.diagnosis_history[19].blood_pressure.systolic.value}`,
-  // `${selectedPatientData?.diagnosis_history[20].blood_pressure.systolic.value}`,
-  // `${selectedPatientData?.diagnosis_history[21].blood_pressure.systolic.value}`,
-  // `${selectedPatientData?.diagnosis_history[22].blood_pressure.systolic.value}`,
-  // `${selectedPatientData?.diagnosis_history[23].blood_pressure.systolic.value}`,
-  // `${selectedPatientData?.diagnosis_history[24].blood_pressure.systolic.value}`,
 
   const dData =
     selectedPatientData && selectedPatientData.diagnosis_history
@@ -58,31 +23,6 @@ const Patients = ({ selectedPatientData }) => {
         )
       : [];
 
-  // `${selectedPatientData?.diagnosis_history[0].blood_pressure.diastolic.value}`,
-  // `${selectedPatientData?.diagnosis_history[1].blood_pressure.diastolic.value}`,
-  // `${selectedPatientData?.diagnosis_history[2].blood_pressure.diastolic.value}`,
-  // `${selectedPatientData?.diagnosis_history[3].blood_pressure.diastolic.value}`,
-  // `${selectedPatientData?.diagnosis_history[4].blood_pressure.diastolic.value}`,
-  // `${selectedPatientData?.diagnosis_history[5].blood_pressure.diastolic.value}`,
-  // `${selectedPatientData?.diagnosis_history[6].blood_pressure.diastolic.value}`,
-  // `${selectedPatientData?.diagnosis_history[7].blood_pressure.diastolic.value}`,
-  // `${selectedPatientData?.diagnosis_history[8].blood_pressure.diastolic.value}`,
-  // `${selectedPatientData?.diagnosis_history[9].blood_pressure.diastolic.value}`,
-  // `${selectedPatientData?.diagnosis_history[10].blood_pressure.diastolic.value}`,
-  // `${selectedPatientData?.diagnosis_history[11].blood_pressure.diastolic.value}`,
-  // `${selectedPatientData?.diagnosis_history[12].blood_pressure.diastolic.value}`,
-  // `${selectedPatientData?.diagnosis_history[13].blood_pressure.diastolic.value}`,
-  // `${selectedPatientData?.diagnosis_history[14].blood_pressure.diastolic.value}`,
-  // `${selectedPatientData?.diagnosis_history[15].blood_pressure.diastolic.value}`,
-  // `${selectedPatientData?.diagnosis_history[16].blood_pressure.diastolic.value}`,
-  // `${selectedPatientData?.diagnosis_history[17].blood_pressure.diastolic.value}`,
-  // `${selectedPatientData?.diagnosis_history[18].blood_pressure.diastolic.value}`,
-  // `${selectedPatientData?.diagnosis_history[19].blood_pressure.diastolic.value}`,
-  // `${selectedPatientData?.diagnosis_history[20].blood_pressure.diastolic.value}`,
-  // `${selectedPatientData?.diagnosis_history[21].blood_pressure.diastolic.value}`,
-  // `${selectedPatientData?.diagnosis_history[22].blood_pressure.diastolic.value}`,
-  // `${selectedPatientData?.diagnosis_history[23].blood_pressure.diastolic.value}`,
-  // `${selectedPatientData?.diagnosis_history[24].blood_pressure.diastolic.value}`,
   const xLabels =
     selectedPatientData && selectedPatientData.diagnosis_history
       ? Array.from(
@@ -91,40 +31,6 @@ const Patients = ({ selectedPatientData }) => {
           )
         )
       : [];
-
-  [
-    // `${selectedPatientData?.diagnosis_history.map(
-    //   (diagnosis) => `${diagnosis.month}, ${diagnosis.year}`
-    // )}`,
-    // `${selectedPatientData?.diagnosis_history.map(
-    //   (diagnosis) =>
-    // )}`,
-    // `${jessica?.diagnosis_history[0].month}, ${jessica?.diagnosis_history[0].year}`,
-    // `${jessica?.diagnosis_history[1].month}, ${jessica?.diagnosis_history[1].year}`,
-    // `${jessica?.diagnosis_history[2].month}, ${jessica?.diagnosis_history[2].year}`,
-    // `${jessica?.diagnosis_history[3].month}, ${jessica?.diagnosis_history[3].year}`,
-    // `${jessica?.diagnosis_history[4].month}, ${jessica?.diagnosis_history[4].year}`,
-    // `${jessica?.diagnosis_history[5].month}, ${jessica?.diagnosis_history[5].year}`,
-    // `${jessica?.diagnosis_history[6].month}, ${jessica?.diagnosis_history[6].year}`,
-    // `${jessica?.diagnosis_history[7].month}, ${jessica?.diagnosis_history[7].year}`,
-    // `${jessica?.diagnosis_history[8].month}, ${jessica?.diagnosis_history[8].year}`,
-    // `${jessica?.diagnosis_history[9].month}, ${jessica?.diagnosis_history[9].year}`,
-    // `${jessica?.diagnosis_history[10].month}, ${jessica?.diagnosis_history[10].year}`,
-    // `${jessica?.diagnosis_history[11].month}, ${jessica?.diagnosis_history[11].year}`,
-    // `${jessica?.diagnosis_history[12].month}, ${jessica?.diagnosis_history[12].year}`,
-    // `${jessica?.diagnosis_history[13].month}, ${jessica?.diagnosis_history[13].year}`,
-    // `${jessica?.diagnosis_history[14].month}, ${jessica?.diagnosis_history[14].year}`,
-    // `${jessica?.diagnosis_history[15].month}, ${jessica?.diagnosis_history[15].year}`,
-    // `${jessica?.diagnosis_history[16].month}, ${jessica?.diagnosis_history[16].year}`,
-    // `${jessica?.diagnosis_history[17].month}, ${jessica?.diagnosis_history[17].year}`,
-    // `${jessica?.diagnosis_history[18].month}, ${jessica?.diagnosis_history[18].year}`,
-    // `${jessica?.diagnosis_history[19].month}, ${jessica?.diagnosis_history[19].year}`,
-    // `${jessica?.diagnosis_history[20].month}, ${jessica?.diagnosis_history[20].year}`,
-    // `${jessica?.diagnosis_history[21].month}, ${jessica?.diagnosis_history[21].year}`,
-    // `${jessica?.diagnosis_history[22].month}, ${jessica?.diagnosis_history[22].year}`,
-    // `${jessica?.diagnosis_history[23].month}, ${jessica?.diagnosis_history[23].year}`,
-    // `${jessica?.diagnosis_history[24].month}, ${jessica?.diagnosis_history[24].year}`,
-  ];
 
   return (
     <div className="patients-chart">
@@ -183,6 +89,10 @@ const Patients = ({ selectedPatientData }) => {
       </div>
     </div>
   );
+};
+
+Patients.propTypes = {
+  selectedPatientData: patientShape,
 };
 
 export default Patients;

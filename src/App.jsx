@@ -26,7 +26,6 @@ function App() {
       const defaultPatient = data.find(
         (person) => person.name === selectedPatientName
       );
-
       setSelectedPatientData(defaultPatient);
     };
     fetchPatients();
