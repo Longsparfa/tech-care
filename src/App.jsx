@@ -1,5 +1,5 @@
 import Home from "./routes/Home";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Overview from "./routes/Overview";
 import Patients from "./routes/Patients";
 import Schedule from "./routes/Schedule";
@@ -17,6 +17,7 @@ function App() {
             <Route path="/schedule" element={<Schedule />} />
             <Route path="/message" element={<Message />} />
             <Route path="/transactions" element={<Transactions />} />
+            <Route index element={<Navigate to={"patients"} replace />} />
           </Route>
         </Routes>
       </BrowserRouter>
