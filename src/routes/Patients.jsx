@@ -1,11 +1,15 @@
-import { LineChart } from "@mui/x-charts/LineChart";
-import Card from "../components/Card";
+// import NavBar from "../components/NavBar";
+import PatientCard from "../components/PatientCard";
+import PatientDetails from "../components/PatientDetails";
+import LabResults from "../components/LabResults";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import PatientsView from "../components/PatientsView";
 
 const Patients = () => {
-  const [data, setData] = useState([]);
-  const [, , , jessica] = data;
+  const [patients, setPatients] = useState([]);
+
+  const [, , , jessica] = patients;
 
   useEffect(() => {
     const fetchPatients = async () => {
@@ -14,149 +18,128 @@ const Patients = () => {
         { auth: { username: "coalition", password: "skills-test" } }
       );
 
-      setData(data);
+      setPatients(data);
     };
     fetchPatients();
   }, []);
 
-  const sData = [
-    `${jessica?.diagnosis_history[0].blood_pressure.systolic.value}`,
-    `${jessica?.diagnosis_history[1].blood_pressure.systolic.value}`,
-    `${jessica?.diagnosis_history[2].blood_pressure.systolic.value}`,
-    `${jessica?.diagnosis_history[3].blood_pressure.systolic.value}`,
-    `${jessica?.diagnosis_history[4].blood_pressure.systolic.value}`,
-    `${jessica?.diagnosis_history[5].blood_pressure.systolic.value}`,
-    `${jessica?.diagnosis_history[6].blood_pressure.systolic.value}`,
-    `${jessica?.diagnosis_history[7].blood_pressure.systolic.value}`,
-    `${jessica?.diagnosis_history[8].blood_pressure.systolic.value}`,
-    `${jessica?.diagnosis_history[9].blood_pressure.systolic.value}`,
-    `${jessica?.diagnosis_history[10].blood_pressure.systolic.value}`,
-    `${jessica?.diagnosis_history[11].blood_pressure.systolic.value}`,
-    `${jessica?.diagnosis_history[12].blood_pressure.systolic.value}`,
-    `${jessica?.diagnosis_history[13].blood_pressure.systolic.value}`,
-    `${jessica?.diagnosis_history[14].blood_pressure.systolic.value}`,
-    `${jessica?.diagnosis_history[15].blood_pressure.systolic.value}`,
-    `${jessica?.diagnosis_history[16].blood_pressure.systolic.value}`,
-    `${jessica?.diagnosis_history[17].blood_pressure.systolic.value}`,
-    `${jessica?.diagnosis_history[18].blood_pressure.systolic.value}`,
-    `${jessica?.diagnosis_history[19].blood_pressure.systolic.value}`,
-    `${jessica?.diagnosis_history[20].blood_pressure.systolic.value}`,
-    `${jessica?.diagnosis_history[21].blood_pressure.systolic.value}`,
-    `${jessica?.diagnosis_history[22].blood_pressure.systolic.value}`,
-    `${jessica?.diagnosis_history[23].blood_pressure.systolic.value}`,
-    `${jessica?.diagnosis_history[24].blood_pressure.systolic.value}`,
-  ];
-  const dData = [
-    `${jessica?.diagnosis_history[0].blood_pressure.diastolic.value}`,
-    `${jessica?.diagnosis_history[1].blood_pressure.diastolic.value}`,
-    `${jessica?.diagnosis_history[2].blood_pressure.diastolic.value}`,
-    `${jessica?.diagnosis_history[3].blood_pressure.diastolic.value}`,
-    `${jessica?.diagnosis_history[4].blood_pressure.diastolic.value}`,
-    `${jessica?.diagnosis_history[5].blood_pressure.diastolic.value}`,
-    `${jessica?.diagnosis_history[6].blood_pressure.diastolic.value}`,
-    `${jessica?.diagnosis_history[7].blood_pressure.diastolic.value}`,
-    `${jessica?.diagnosis_history[8].blood_pressure.diastolic.value}`,
-    `${jessica?.diagnosis_history[9].blood_pressure.diastolic.value}`,
-    `${jessica?.diagnosis_history[10].blood_pressure.diastolic.value}`,
-    `${jessica?.diagnosis_history[11].blood_pressure.diastolic.value}`,
-    `${jessica?.diagnosis_history[12].blood_pressure.diastolic.value}`,
-    `${jessica?.diagnosis_history[13].blood_pressure.diastolic.value}`,
-    `${jessica?.diagnosis_history[14].blood_pressure.diastolic.value}`,
-    `${jessica?.diagnosis_history[15].blood_pressure.diastolic.value}`,
-    `${jessica?.diagnosis_history[16].blood_pressure.diastolic.value}`,
-    `${jessica?.diagnosis_history[17].blood_pressure.diastolic.value}`,
-    `${jessica?.diagnosis_history[18].blood_pressure.diastolic.value}`,
-    `${jessica?.diagnosis_history[19].blood_pressure.diastolic.value}`,
-    `${jessica?.diagnosis_history[20].blood_pressure.diastolic.value}`,
-    `${jessica?.diagnosis_history[21].blood_pressure.diastolic.value}`,
-    `${jessica?.diagnosis_history[22].blood_pressure.diastolic.value}`,
-    `${jessica?.diagnosis_history[23].blood_pressure.diastolic.value}`,
-    `${jessica?.diagnosis_history[24].blood_pressure.diastolic.value}`,
-  ];
-  const xLabels = [
-    `${jessica?.diagnosis_history[0].month}, ${jessica?.diagnosis_history[0].year}`,
-    `${jessica?.diagnosis_history[1].month}, ${jessica?.diagnosis_history[1].year}`,
-    `${jessica?.diagnosis_history[2].month}, ${jessica?.diagnosis_history[2].year}`,
-    `${jessica?.diagnosis_history[3].month}, ${jessica?.diagnosis_history[3].year}`,
-    `${jessica?.diagnosis_history[4].month}, ${jessica?.diagnosis_history[4].year}`,
-    `${jessica?.diagnosis_history[5].month}, ${jessica?.diagnosis_history[5].year}`,
-    `${jessica?.diagnosis_history[6].month}, ${jessica?.diagnosis_history[6].year}`,
-    `${jessica?.diagnosis_history[7].month}, ${jessica?.diagnosis_history[7].year}`,
-    `${jessica?.diagnosis_history[8].month}, ${jessica?.diagnosis_history[8].year}`,
-    `${jessica?.diagnosis_history[9].month}, ${jessica?.diagnosis_history[9].year}`,
-    `${jessica?.diagnosis_history[10].month}, ${jessica?.diagnosis_history[10].year}`,
-    `${jessica?.diagnosis_history[11].month}, ${jessica?.diagnosis_history[11].year}`,
-    `${jessica?.diagnosis_history[12].month}, ${jessica?.diagnosis_history[12].year}`,
-    `${jessica?.diagnosis_history[13].month}, ${jessica?.diagnosis_history[13].year}`,
-    `${jessica?.diagnosis_history[14].month}, ${jessica?.diagnosis_history[14].year}`,
-    `${jessica?.diagnosis_history[15].month}, ${jessica?.diagnosis_history[15].year}`,
-    `${jessica?.diagnosis_history[16].month}, ${jessica?.diagnosis_history[16].year}`,
-    `${jessica?.diagnosis_history[17].month}, ${jessica?.diagnosis_history[17].year}`,
-    `${jessica?.diagnosis_history[18].month}, ${jessica?.diagnosis_history[18].year}`,
-    `${jessica?.diagnosis_history[19].month}, ${jessica?.diagnosis_history[19].year}`,
-    `${jessica?.diagnosis_history[20].month}, ${jessica?.diagnosis_history[20].year}`,
-    `${jessica?.diagnosis_history[21].month}, ${jessica?.diagnosis_history[21].year}`,
-    `${jessica?.diagnosis_history[22].month}, ${jessica?.diagnosis_history[22].year}`,
-    `${jessica?.diagnosis_history[23].month}, ${jessica?.diagnosis_history[23].year}`,
-    `${jessica?.diagnosis_history[24].month}, ${jessica?.diagnosis_history[24].year}`,
-  ];
-
   return (
-    <div className="patients-chart">
-      <h2 className="chart-h2">Diagnosis History</h2>
-      <div className="chart">
-        <h3 className="chart-h3">Blood Pressure</h3>
+    <>
+      <div className=" sm:flex flex-col lg:flex-row overflow-hidden layout">
+        <div className="w-[35re] h-[59rem] bg-[#ffffff] rounded-[16px] mt-4 ">
+          <div className="p-4 relative w-[90%]">
+            <input
+              type="text"
+              className="w-full font-[Manrope] text-[24px] text-[#072635] p-1 outline-non "
+              placeholder="Patients"
+            />
+            <img
+              className="absolute bottom-5 left-45 "
+              src="assets/icons/search_FILL0_wght300_GRAD0_opsz24.svg"
+              alt="search"
+            />
+          </div>
+          <div className="flex md:flex-col items-center justify-center flex-wrap md:flex-nowrap overflow-y-scroll h-[90%] ">
+            {patients.map((patientInfo) => {
+              const { profile_picture, name, gender, age } = patientInfo;
+              return (
+                <PatientCard
+                  key={Date.now}
+                  img={profile_picture}
+                  name={name}
+                  gender={gender}
+                  age={age}
+                  width={patientInfo.width}
+                />
+              );
+            })}
+          </div>
+        </div>
+        <div className="diagnosis">
+          <div className="bg-[#ffffff] mt-4 mx-4 p-4 rounded-[16px] history">
+            {/* <Outlet /> */}
+            <PatientsView />
+          </div>
+          <div className="bg-[#ffffff] mt-4 mx-2 p-4 rounded-[16px] list">
+            <h2 className="font-[Manrope] font-bold text-xl text-[#072635]">
+              Diagnosis List
+            </h2>
+            <div className="overflow-y-scroll">
+              <table>
+                <thead>
+                  <tr className="bg-[#f6f7f8] rounded-[24px] table-margin">
+                    <th className="p-4">Problem/Diagnosis</th>
+                    <th className="p-4">Description</th>
+                    <th className="p-4">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="font-[Manrope] p-4 text-[#072635] ">
+                      {jessica?.diagnostic_list[0].name}
+                    </td>
+                    <td className="font-[Manrope] p-4 text-[#072635] ">
+                      {jessica?.diagnostic_list[0].description}
+                    </td>
+                    <td className="font-[Manrope] p-4 text-[#072635] ">
+                      {jessica?.diagnostic_list[0].status}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="font-[Manrope] p-4 text-[#072635]">
+                      {jessica?.diagnostic_list[1].name}
+                    </td>
+                    <td className="font-[Manrope] p-4 text-[#072635]">
+                      {jessica?.diagnostic_list[1].description}
+                    </td>
+                    <td className="font-[Manrope] p-4 text-[#072635]">
+                      {jessica?.diagnostic_list[1].status}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="font-[Manrope] p-4 text-[#072635]">
+                      {jessica?.diagnostic_list[2].name}
+                    </td>
+                    <td className="font-[Manrope] p-4 text-[#072635]">
+                      {jessica?.diagnostic_list[2].description}
+                    </td>
+                    <td className="font-[Manrope] p-4 text-[#072635]">
+                      {jessica?.diagnostic_list[2].status}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
 
-        <LineChart
-          xAxis={[
-            {
-              scaleType: "point",
-              data: xLabels,
-            },
-          ]}
-          series={[
-            {
-              data: sData,
-              label: "Systolic",
-              color: "#E66FD2",
-            },
-            {
-              data: dData,
-              label: "Diastolic",
-              color: "#7E6CAB",
-            },
-          ]}
-          width={500}
-          height={300}
-          grid={{ horizontal: true }}
-        />
+        <div className="patient-details">
+          <div className="bg-[#ffffff] mt-4 p-4 rounded-[16px]">
+            <PatientDetails
+              img={jessica?.profile_picture}
+              name={jessica?.name}
+              DOB={jessica?.date_of_birth}
+              gender={jessica?.gender}
+              contact={jessica?.phone_number}
+              emergency={jessica?.emergency_contact}
+              insurance={jessica?.insurance_type}
+            />
+          </div>
+          <div className="bg-[#ffffff] mt-4 mx-2 p-4 rounded-[16px] results">
+            <h2 className="font-[Manrope] font-bold text-xl text-[#072635] mb-4">
+              Lab Results
+            </h2>
+            <div className="p-4 overflow-y-scroll h-[90%] ">
+              <LabResults test={jessica?.lab_results[0]} />
+              <LabResults test={jessica?.lab_results[1]} />
+              <LabResults test={jessica?.lab_results[2]} />
+              <LabResults test={jessica?.lab_results[3]} />
+              {/* <LabResults test={jessica?.lab_results[4]} /> */}
+            </div>
+          </div>
+        </div>
       </div>
-      <div className="flex padding">
-        <Card
-          img="assets/icons/respiratory rate.svg"
-          content="Respiratory Rate"
-          rate={`${jessica?.diagnosis_history[0].respiratory_rate.value} bpm`}
-          status={`${jessica?.diagnosis_history[0].respiratory_rate.levels}`}
-          color="#e0f3fa"
-          margin="1rem"
-        />
-        <Card
-          img="assets/icons/temperature.svg"
-          content="Temperature"
-          rate={`${jessica?.diagnosis_history[0].temperature.value}°F`}
-          status={`${jessica?.diagnosis_history[0].temperature.levels}`}
-          color="#FFE6E9"
-          margin="1rem"
-        />
-        <Card
-          img="assets/icons/HeartBPM.svg"
-          content="Heart Rate"
-          rate={`${jessica?.diagnosis_history[0].heart_rate.value} bpm`}
-          status={`${jessica?.diagnosis_history[0].heart_rate.levels}`}
-          color="#FFE6F1"
-        />
-      </div>
-    </div>
+    </>
   );
 };
 

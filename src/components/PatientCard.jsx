@@ -6,12 +6,14 @@ const PatientCard = (prop) => {
       to={"/patient"}
       className={({ isActive }) => (isActive ? "active" : "")}
     >
-      <div className="patient-card">
-        <div className="patient-info">
+      <div className="flex items-center justify-between p-4 patient-card">
+        <div className="flex items-center justify-center m-4 patient-info">
           <img src={prop.img} alt="patient" style={{ width: prop.width }} />
-          <div className="margin-left">
-            <p className="nav">{prop.name}</p>
-            <p className="nav1">
+          <div className="ml-2">
+            <p className="font-[Manrope] font-bold text-sm text-[#072635] ">
+              {prop.name}
+            </p>
+            <p className="font-[Manrope] font-bold text-sm text-[#707070]">
               {prop.gender}, {prop.age}
             </p>
           </div>

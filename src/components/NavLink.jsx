@@ -3,12 +3,14 @@ import { NavLink } from "react-router-dom";
 const NavLinks = (prop) => {
   return (
     <>
-      <a className="nav anchor">
+      <a className="mr-6 font-[Times_New_Roman] font-bold text-[16px] text-[#0000EE] hover:text-[#707070] ">
         <NavLink
           to={prop.link}
-          className={({ isActive }) => (isActive ? "active" : "")}
+          className={({ isActive }) =>
+            isActive ? "active flex items-center " : "flex items-center "
+          }
         >
-          <img className="overview" src={prop.icon} alt={prop.description} />
+          <img className="mr-2" src={prop.icon} alt={prop.description} />
           {prop.description}
         </NavLink>
       </a>

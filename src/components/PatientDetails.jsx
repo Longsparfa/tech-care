@@ -2,9 +2,13 @@ import PatientInfo from "./PatientInfo";
 
 const PatientDetails = (prop) => {
   return (
-    <div className="padding-patient">
-      <img className="w200" src={prop.img} alt="patient" />
-      <p className="name">{prop.name}</p>
+    <div className="">
+      <div className="flex items-center justify-center">
+        <img className="w-[200px] " src={prop.img} alt="patient" />
+      </div>
+      <p className="font-[Manrope] font-bold text-center text-[#072635] mt-4">
+        {prop.name}
+      </p>
       <PatientInfo
         icon="assets/icons/BirthIcon.svg"
         title="Date Of Birth"
@@ -30,8 +34,10 @@ const PatientDetails = (prop) => {
         title="Insurance Provider"
         value={prop.insurance}
       />
-      <div className="flex margin-top">
-        <button className="button">Show All Information</button>
+      <div className="flex items-center justify-center">
+        <button className="bg-[#01f0d0] rounded-[41px] p-4 font-bold font-[Manrope] text-sm text-[#072635]  button">
+          Show All Information
+        </button>
       </div>
     </div>
   );
