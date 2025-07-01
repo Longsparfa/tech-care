@@ -110,6 +110,31 @@ const PatientsView = () => {
         <h3 className="font-[Manrope] font-bold pl-4 pt-2 text-lg lg:ml-12 text-[#072635]">
           Blood Pressure
         </h3>
+        <div className="sm:hidden">
+          <LineChart
+            xAxis={[
+              {
+                scaleType: "point",
+                data: xLabels,
+              },
+            ]}
+            series={[
+              {
+                data: sData,
+                label: "Systolic",
+                color: "#E66FD2",
+              },
+              {
+                data: dData,
+                label: "Diastolic",
+                color: "#7E6CAB",
+              },
+            ]}
+            width={310}
+            height={270}
+            grid={{ horizontal: true }}
+          />
+        </div>
         <div className="hidden sm:block lg:ml-12 ">
           <LineChart
             xAxis={[
@@ -136,7 +161,7 @@ const PatientsView = () => {
           />
         </div>
       </div>
-      <div className="flex items-center justify-center ">
+      <div className="flex flex-col sm:flex-row items-center justify-center ">
         <Card
           img="assets/icons/respiratory rate.svg"
           content="Respiratory Rate"

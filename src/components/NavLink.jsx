@@ -7,7 +7,7 @@ const NavLinks = (prop) => {
         <NavLink
           to={prop.link}
           className={({ isActive }) =>
-            isActive ? "active flex items-center " : "flex items-center "
+            isActive ? "active flex items-center" : "flex items-center "
           }
         >
           <img className="mr-2" src={prop.icon} alt={prop.description} />

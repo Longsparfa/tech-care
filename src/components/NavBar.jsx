@@ -1,6 +1,15 @@
+import { useState } from "react";
 import NavLinks from "./NavLink";
+import { IoClose } from "react-icons/io5";
+import { IoMdMore } from "react-icons/io";
+import { NavLink } from "react-router-dom";
 
 const NavBar = () => {
+  const [showMenu, setShowMenu] = useState(false);
+
+  function toggleMenu() {
+    setShowMenu(!showMenu);
+  }
   return (
     <div className="bg-[#ffffff] h-[72px] rounded-[70px] p-[16px] flex items-center justify-between navbar">
       <div className="">
@@ -59,11 +68,26 @@ const NavBar = () => {
           src="assets/icons/settings_FILL0_wght300_GRAD0_opsz24.svg"
           alt=""
         />
-        <img
-          className="mr-4"
-          src="assets/icons/more_vert_FILL0_wght300_GRAD0_opsz24.svg"
-          alt="dot3"
-        />
+        <div className="relative" onClick={toggleMenu}>
+          <span className="flex items-center justify-center">
+            <div className="cursor-pointer">
+              {showMenu ? (
+                <IoClose fontSize={27} />
+              ) : (
+                <IoMdMore fontSize={27} />
+              )}
+            </div>
+          </span>
+          {showMenu && (
+            <div className="absolute right-[0px] top-[53px] text-[#00000] font-bold bg-indigo-600 flex flex-col items-center rounded-md gap-4 py-6 p-8">
+              <NavLink to={"/"}>Overview</NavLink>
+              <NavLink to={"/patients"}>Patients</NavLink>
+              <NavLink to={"/schedule"}>Schedule</NavLink>
+              <NavLink to={"/message"}>Message</NavLink>
+              <NavLink to={"/transactions"}>Transactions</NavLink>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

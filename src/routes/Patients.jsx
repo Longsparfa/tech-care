@@ -5,6 +5,7 @@ import LabResults from "../components/LabResults";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import PatientsView from "../components/PatientsView";
+import { IoSearch } from "react-icons/io5";
 
 const Patients = () => {
   const [patients, setPatients] = useState([]);
@@ -26,18 +27,16 @@ const Patients = () => {
   return (
     <>
       <div className=" sm:flex flex-col lg:flex-row overflow-hidden layout">
-        <div className="w-[35re] h-[59rem] bg-[#ffffff] rounded-[16px] mt-4 ">
-          <div className="p-4 relative w-[90%]">
+        <div className=" h-[59rem] bg-[#ffffff] rounded-[16px] mt-4 ">
+          <div className="flex p-4 w-[90%]">
             <input
               type="text"
-              className="w-full font-[Manrope] text-[24px] text-[#072635] p-1 outline-non "
+              className="w-full flex grow font-[Manrope] text-[24px] text-[#072635] p-1 outline-none"
               placeholder="Patients"
             />
-            <img
-              className="absolute bottom-5 left-45 "
-              src="assets/icons/search_FILL0_wght300_GRAD0_opsz24.svg"
-              alt="search"
-            />
+            <button className="cursor-pointer">
+              <IoSearch fontSize={27} />
+            </button>
           </div>
           <div className="flex md:flex-col items-center justify-center flex-wrap md:flex-nowrap overflow-y-scroll h-[90%] ">
             {patients.map((patientInfo) => {
@@ -56,11 +55,11 @@ const Patients = () => {
           </div>
         </div>
         <div className="diagnosis">
-          <div className="bg-[#ffffff] mt-4 mx-4 p-4 rounded-[16px] history">
+          <div className="bg-[#ffffff] mt-4 lg:mx-4 p-4 rounded-[16px] history">
             {/* <Outlet /> */}
             <PatientsView />
           </div>
-          <div className="bg-[#ffffff] mt-4 mx-2 p-4 rounded-[16px] list">
+          <div className="bg-[#ffffff] mt-4 lg:mx-4 p-4 rounded-[16px] list">
             <h2 className="font-[Manrope] font-bold text-xl text-[#072635]">
               Diagnosis List
             </h2>
@@ -125,7 +124,7 @@ const Patients = () => {
               insurance={jessica?.insurance_type}
             />
           </div>
-          <div className="bg-[#ffffff] mt-4 mx-2 p-4 rounded-[16px] results">
+          <div className="bg-[#ffffff] mt-4 lg:mx-2 p-4 rounded-[16px] results">
             <h2 className="font-[Manrope] font-bold text-xl text-[#072635] mb-4">
               Lab Results
             </h2>
